@@ -31,6 +31,10 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+import userRoutes from './routes/user.routes.js'
+
+app.use('/users',userRoutes);
+
 
 app.use(errorHandler);
 
