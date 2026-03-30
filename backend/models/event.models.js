@@ -18,6 +18,15 @@ const agendaItemSchema = new mongoose.Schema(
   { _id: false }
 );
 
+const imageSchema = new mongoose.Schema(
+  {
+    url: { type: String, required: true },
+    fileId: { type: String, default: null },
+  },
+  { _id: false }
+);
+
+
 const eventSchema = new mongoose.Schema(
   {
     title: {
@@ -31,13 +40,14 @@ const eventSchema = new mongoose.Schema(
     },
     category: {
       type: String,
+      enum: ["technology", "business", "health", "education", "entertainment", "other"],
       required: [true, "Category is required"],
     },
     image: {
-      type: String,
+      type: imageSchema,
       default: null,
     },
-    location: {
+    location: { 
       type: String,
       required: [true, "Location is required"],
     },
@@ -73,6 +83,10 @@ const eventSchema = new mongoose.Schema(
       type: String,
       enum: ["active", "completed", "cancelled"],
       default: "active",
+    },
+    paymentDetails: {
+      type: mongoose.Schema.Types.Mixed,
+      default: null,
     },
     speakers: [speakerSchema],
     agenda:   [agendaItemSchema],
