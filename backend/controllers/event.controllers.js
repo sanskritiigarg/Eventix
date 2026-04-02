@@ -105,7 +105,7 @@ const getEventById = async (req, res) => {
     }
 }
 
-const getEventsByOrganizer = async (req, res) => {
+const getEventsbyOrganizer = async (req, res) => {
   try {
     const events = await Event.find({organizer: req.user._id});
 
@@ -161,4 +161,4 @@ const deleteEvent = async (req, res) => {
     }
 }
 
-export { createEvent, getEvents, getEventById, updateEvent, deleteEvent };
+export { createEvent, getEvents, getEventById, getEventsbyOrganizer, updateEvent, deleteEvent };

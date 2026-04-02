@@ -1,7 +1,7 @@
 import express from 'express';
-import { createEvent, getEvents, getEventById, updateEvent, deleteEvent, getEventsbyOrganizer } from '../controllers/event.controllers.js';
+import { createEvent, getEvents, getEventById, getEventsbyOrganizer, updateEvent, deleteEvent } from '../controllers/event.controllers.js';
 import protect from '../middlewares/auth.middlewares.js';
-import organizer from '../middlewares/organizer.middlewares.js';
+import {organizer} from '../middlewares/authorize.middlewares.js';
 import upload from '../config/multer.js';
 
 const router = express.Router();
